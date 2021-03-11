@@ -38,3 +38,10 @@ def drop_NA_instances(df):
     print('\n== Drop NA instances ==')
     print('Before : {} / After : {}'.format(df.shape, new.shape))
     return new
+
+
+def numerical_preprocessing(df, numerical_features):
+    from sklearn.preprocessing import MinMaxScaler
+    scaler = MinMaxScaler()
+    df[numerical_features] = scaler.fit_transform(df[numerical_features])
+    return df
